@@ -1,0 +1,53 @@
+Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+
+Note: For the purpose of this problem, we define empty string as valid palindrome.
+
+Example 1:
+
+Input: "A man, a plan, a canal: Panama"
+Output: true
+
+Example 2:
+
+Input: "race a car"
+Output: false
+
+ 
+
+Constraints:
+
+    s consists only of printable ASCII characters.
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        n=len(s)
+        i=0
+        j=n-1    
+        while i<n and not s[i].isalnum():
+            i+=1
+        while j>=0 and not s[j].isalnum():
+            j-=1
+        while i<j:
+            if s[i].lower()!=s[j].lower():
+                return False
+            i+=1
+            j-=1
+            while i<n and not s[i].isalnum():
+                i+=1
+            while j>=0 and not s[j].isalnum():
+                j-=1
+                
+        return True
+        
+        
+        # l=[]
+        # s=s.lower()
+        # for i in s:
+        #     if i.isalpha():
+        #         l.append(i)
+        # print(l)                
+        # k=l[::-1]
+        # print(k)
+        # if "".join(l)=="".join(k) and len(l)!=1:
+        #     return True
+        
